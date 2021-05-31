@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 const Login = () => import(/* webpackChunkName: "Login" */ '../views/Login.vue')
 const Admin = () => import(/* webpackChunkName: "Admin" */ '../views/Admin.vue')
+const DisPlayInfo = () => import(/* webpackChunkName: "Admin" */ '../views/DisplayInfo.vue')
 
 // 页面路由组件
 const Index = () => import(/* webpackChunkName: "Index" */ '../components/admin/Index.vue')
@@ -11,6 +12,8 @@ const CateList = () => import(/* webpackChunkName: "CateList" */ '../components/
 const UserList = () => import(/* webpackChunkName: "UserList" */ '../components/user/UserList.vue')
 const Profile = () => import(/* webpackChunkName: "UserList" */ '../components/user/Profile.vue')
 const CommentList = () => import(/* webpackChunkName: "UserList" */ '../components/comment/commentList.vue')
+const DispalyArt = () => import(/* webpackChunkName: "Admin" */ '../components/article/Display.vue')
+
 
 // 路由重复点击捕获错误
 const originalPush = VueRouter.prototype.push
@@ -31,10 +34,18 @@ const routes = [
     component: Login
   },
   {
+    path: '/Display',
+    name: 'Display',
+    meta: {
+      title: '展示订阅'
+    },
+    component: DisPlayInfo
+  },
+  {
     path: '/',
     name: 'admin',
     meta: {
-      title: 'GinBlog 后台管理页面'
+      title: 'Gin RSS'
     },
     component: Admin,
     children: [
@@ -42,14 +53,14 @@ const routes = [
         path: 'index',
         component: Index,
         meta: {
-          title: 'GinBlog 后台管理页面'
+          title: 'Gin RSS'
         }
       },
       {
         path: 'addart',
         component: AddArt,
         meta: {
-          title: '新增文章'
+          title: '新增订阅'
         }
       },
       {
@@ -89,10 +100,17 @@ const routes = [
         }
       },
       {
-        path: 'commentlist',
+        path: 'commentlist/:id',
         component: CommentList,
         meta: {
           title: '评论管理'
+        }
+      },
+      {
+        path: 'display',
+        component: DispalyArt,
+        meta: {
+          title: '展示订阅'
         }
       }
     ]

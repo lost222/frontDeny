@@ -88,6 +88,7 @@ const columns = [
 ]
 
 export default {
+  props: ['id'],
   data() {
     return {
       pagination: {

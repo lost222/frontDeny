@@ -47,8 +47,8 @@
               type="primary"
               icon="edit"
               style="margin-right: 15px"
-              @click="$router.push(`/addart/${data.ID}`)"
-            >编辑</a-button>
+              @click="$router.push(`/commentlist/${data.ID}`)"
+            >跳转</a-button>
             <a-button
               size="small"
               type="danger"
@@ -84,13 +84,13 @@ const columns = [
       return val ? day(val).format('YYYY年MM月DD日 HH:mm') : '暂无'
     },
   },
-  {
-    title: '收藏夹',
-    dataIndex: 'fav',
-    width: '5%',
-    key: 'name',
-    align: 'center',
-  },
+  // {
+  //   title: '收藏夹',
+  //   dataIndex: 'fav',
+  //   width: '5%',
+  //   key: 'name',
+  //   align: 'center',
+  // },
   {
     title: '订阅标题',
     dataIndex: 'feedname',
@@ -156,8 +156,10 @@ export default {
           pagenum: this.queryParam.pagenum,
         },
       })
-      console.log(res.status)
-      console.log(res)
+      console.log("pagesize")
+      //console.log(pagesize)
+      // console.log(res.status)
+      // console.log(res)
       console.log(res.feeds)
       if (res.status !== 200) {
         if (res.status === 1004 || 1005 || 1006 || 1007 ||1009) {
